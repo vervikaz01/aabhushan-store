@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aabhūshan | Haute Joaillerie & Single-Edition Celebrity Designs</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDark: '#042218',
+                        emeraldDeep: '#073325',
+                        emeraldCard: '#0b4231',
+                        champagne: '#E5C158',
+                        champagneLight: '#F3E5AB',
+                        champagneDark: '#C5A038',
+                        charcoal: '#121212',
+                        charcoalLight: '#1E1E1E',
+                        cream: '#F9F6F0'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        hindi: ['Rozha One', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Rozha+One&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #042218;
+            color: #F9F6F0;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-hindi-custom {
+            font-family: 'Rozha One', serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #042218;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A038;
+            border-radius: 4px;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #E5C158 50%, #C5A038 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #F3E5AB 0%, #E5C158 50%, #C5A038 100%);
+        }
+        .gold-border {
+            border-color: rgba(229, 193, 88, 0.3);
+        }
+        .gold-border-glow:hover {
+            border-color: #E5C158;
+            box-shadow: 0 0 20px rgba(229, 193, 88, 0.2);
+        }
+        .glass-panel {
+            background: rgba(7, 51, 37, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 193, 88, 0.2);
+        }
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(229,193,88,0.15) 0%, rgba(4,34,24,0) 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-champagne selection:text-emeraldDark">
+
+    <!-- Notification / Announcement Banner -->
+    <div class="bg-gradient-to-r from-emeraldDeep via-emeraldDark to-emeraldDeep text-champagneLight text-xs py-2 px-4 text-center tracking-widest uppercase border-b border-champagne/20">
+        <span class="inline-block animate-pulse mr-2">✦</span> Exclusive Drop: The Royal Rajputana Single-Editions Now Live <span class="inline-block animate-pulse ml-2">✦</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-champagne/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-champagne focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+
+            <!-- Brand Logo (Mixed Script: Aa + भू + shan -> Aabhūshan) -->
+            <a href="#" class="flex items-center space-x-1 group">
+                <div class="flex items-baseline tracking-wider">
+                    <span class="font-serif font-bold text-2xl sm:text-3xl text-champagne">Aa</span><span class="font-hindi-custom text-2xl sm:text-3xl text-white mx-0.5 transform translate-y-0.5">भू</span><span class="font-serif font-bold text-2xl sm:text-3xl text-champagne">shan</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm tracking-widest uppercase font-medium">
+                <a href="#identity" class="text-champagneLight hover:text-champagne transition-colors">Brand & Logo</a>
+                <a href="#concept" class="text-champagneLight hover:text-champagne transition-colors">Single Edition Concept</a>
+                <a href="#collection" class="text-champagneLight hover:text-champagne transition-colors">Celebrity Edit</a>
+                <a href="#bespoke" class="text-champagneLight hover:text-champagne transition-colors">Bespoke Studio</a>
+                <a href="#story" class="text-champagneLight hover:text-champagne transition-colors">The Atelier</a>
+            </nav>
+
+            <!-- Actions (Wishlist, Cart) -->
+            <div class="flex items-center space-x-5">
+                <button onclick="openWishlist()" class="relative text-champagneLight hover:text-champagne transition-colors" title="Wishlist">
+                    <i class="fa-regular fa-heart text-xl"></i>
+                    <span id="wishlist-badge" class="absolute -top-2 -right-2 bg-champagne text-emeraldDark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+                <button onclick="openCart()" class="relative text-champagneLight hover:text-champagne transition-colors" title="Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-champagne text-emeraldDark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emeraldDeep border-b border-champagne/20 px-6 py-4 space-y-3">
+            <a href="#identity" class="block text-champagneLight hover:text-champagne text-sm uppercase tracking-wider">Brand & Logo</a>
+            <a href="#concept" class="block text-champagneLight hover:text-champagne text-sm uppercase tracking-wider">Single Edition Concept</a>
+            <a href="#collection" class="block text-champagneLight hover:text-champagne text-sm uppercase tracking-wider">Celebrity Edit</a>
+            <a href="#bespoke" class="block text-champagneLight hover:text-champagne text-sm uppercase tracking-wider">Bespoke Studio</a>
+            <a href="#story" class="block text-champagneLight hover:text-champagne text-sm uppercase tracking-wider">The Atelier</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 py-20">
+        <div class="hero-glow top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="hero-glow bottom-10 right-10"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+            <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-champagne/40 bg-emeraldCard/40 backdrop-blur-md">
+                <span class="text-champagne text-xs uppercase tracking-widest font-semibold">Haute Joaillerie • Single Edition</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-cream leading-tight">
+                Crafted Once. <br><span class="gold-gradient-text italic font-normal">Worn By Icons.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-300 text-base sm:text-lg font-light leading-relaxed">
+                Welcome to <span class="font-serif text-champagne font-semibold">Aabhūshan</span>. Masterpieces designed exclusively for red-carpets and floated only once in existence, tailored with bespoke celebrity precision.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#collection" class="w-full sm:w-auto px-8 py-4 gold-gradient-bg text-emeraldDark font-semibold uppercase tracking-widest text-sm rounded-none hover:opacity-95 transition-all shadow-lg shadow-champagne/10 text-center">
+                    Explore Celebrity Edit
+                </a>
+                <a href="#bespoke" class="w-full sm:w-auto px-8 py-4 border border-champagne text-champagne font-semibold uppercase tracking-widest text-sm rounded-none hover:bg-champagne/10 transition-all text-center">
+                    Create Bespoke Piece
+                </a>
+            </div>
+
+            <!-- Trust / Heritage Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-16 border-t border-champagne/10 max-w-4xl mx-auto text-center">
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl text-champagne font-bold">1-of-1</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Single Edition Guarantee</p>
+                </div>
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl text-champagne font-bold">Bespoke</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Celebrity Style Customisation</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <p class="font-serif text-2xl sm:text-3xl text-champagne font-bold">Hallmarked</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Certified Rare Gemstones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Brand Identity & Logo Showcase -->
+    <section id="identity" class="py-24 bg-emeraldDeep relative border-y border-champagne/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <p class="text-champagne text-xs uppercase tracking-widest font-semibold">The Brand Signature</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream">The Art of <span class="gold-gradient-text">Aabhūshan</span></h2>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    Our mixed-script typography bridges global sophistication with rich Indian heritage. Representing <span class="font-serif text-champagne">Aa</span> (English elegance), <span class="font-hindi-custom text-white">भू</span> (Devanagari soul with bade u ki maatra 'भू' from आभूषण), and <span class="font-serif text-champagne">shan</span> (opulence & prestige).
+                </p>
+            </div>
+
+            <!-- Interactive Logo Showcase Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Visual Card -->
+                <div class="glass-panel p-10 sm:p-16 flex flex-col items-center justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-champagne/5 to-transparent pointer-events-none"></div>
+                    <div class="absolute -right-10 -bottom-10 text-champagne/5 font-serif text-9xl font-bold pointer-events-none">A</div>
+                    
+                    <div class="py-12 text-center relative z-10">
+                        <div id="interactive-logo-display" class="flex items-baseline justify-center tracking-wider scale-125 sm:scale-150 transition-all duration-500">
+                            <span class="font-serif font-bold text-5xl sm:text-6xl text-champagne drop-shadow-md">Aa</span><span class="font-hindi-custom text-5xl sm:text-6xl text-white mx-1 transform translate-y-1 drop-shadow-md">भू</span><span class="font-serif font-bold text-5xl sm:text-6xl text-champagne drop-shadow-md">shan</span>
+                        </div>
+                        <p class="text-xs uppercase tracking-[0.3em] text-champagne/70 mt-8">Haute Joaillerie Atelier • Est. 2026</p>
+                    </div>
+
+                    <div class="flex items-center space-x-3 mt-6 pt-6 border-t border-champagne/20 w-full justify-center">
+                        <button onclick="changeLogoStyle('classic')" class="px-3 py-1 text-xs uppercase tracking-wider border border-champagne text-champagne hover:bg-champagne hover:text-emeraldDark transition-all">Classic Gold</button>
+                        <button onclick="changeLogoStyle('emerald')" class="px-3 py-1 text-xs uppercase tracking-wider border border-champagne text-champagne hover:bg-champagne hover:text-emeraldDark transition-all">Emerald Glow</button>
+                        <button onclick="changeLogoStyle('platinum')" class="px-3 py-1 text-xs uppercase tracking-wider border border-champagne text-champagne hover:bg-champagne hover:text-emeraldDark transition-all">Royal Ivory</button>
+                    </div>
+                </div>
+
+                <!-- Brand Pillars Breakdown -->
+                <div class="space-y-6">
+                    <div class="glass-panel p-6 border-l-4 border-l-champagne">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="font-serif text-2xl text-champagne font-bold">01</span>
+                            <h3 class="font-serif text-xl font-semibold text-cream">Aa — Anglo Elegance</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Denoting international luxury standards, minimalist geometry, and contemporary red-carpet silhouettes tailored for global tastemakers.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 border-l-4 border-l-white">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="font-hindi-custom text-2xl text-white font-bold">02</span>
+                            <h3 class="font-serif text-xl font-semibold text-cream">भू — Devanagari Soul (Bade 'ū')</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            The heart of 'आभूषण' featuring the elongated 'ū' (ू) maatra. Infusing centuries-old Indian royal karigari, polki settings, and sacred temple motifs into modern wearable art.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 border-l-4 border-l-champagneDark">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="font-serif text-2xl text-champagneDark font-bold">03</span>
+                            <h3 class="font-serif text-xl font-semibold text-cream">shan — Imperial Glory</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Signifying grandeur, peerless prestige, and the unforgettable aura of the wearer when adorned in our single-edition masterpieces.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Concept & USP Section -->
+    <section id="concept" class="py-24 bg-emeraldDark relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <p class="text-champagne text-xs uppercase tracking-widest font-semibold">Our Philosophy</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream">Crafted Special. <span class="gold-gradient-text">Floated Only Once.</span></h2>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    We reject mass production. Every design in our vault is minted and crafted in a strict <strong>Single Edition</strong>. Once claimed, the mold is permanently archived, ensuring you own a piece of absolute uniqueness.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 text-center space-y-4 hover:border-champagne transition-all duration-300 group">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-emeraldCard border border-champagne flex items-center justify-center text-champagne text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-cream">Single-Edition Vault</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Each piece is created exactly once with custom certified gemstones. When purchased, the design status changes to <span class="text-champagne font-semibold">"Archived Forever"</span>.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 text-center space-y-4 hover:border-champagne transition-all duration-300 group">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-emeraldCard border border-champagne flex items-center justify-center text-champagne text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-cream">Celebrity Bespoke Line</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Inspired by iconic red-carpet moments. We recreate and elevate celebrity styles, fine-tuned precisely to your personal measurements and gemstone preferences.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel p-8 text-center space-y-4 hover:border-champagne transition-all duration-300 group">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-emeraldCard border border-champagne flex items-center justify-center text-champagne text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-cream">Ethical Heirloom Quality</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Handcrafted by master artisans using conflict-free diamonds, rare Zambian emeralds, Golconda polki, and 18K Hallmarked gold designed to pass down generations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Featured Collections / Celebrity Edit Carousel -->
+    <section id="collection" class="py-24 bg-emeraldDeep border-t border-champagne/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="space-y-4">
+                    <p class="text-champagne text-xs uppercase tracking-widest font-semibold">The Red Carpet Vault</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream">Celebrity Edit & <span class="gold-gradient-text">Single Editions</span></h2>
+                </div>
+                <div class="mt-6 md:mt-0 flex items-center space-x-3">
+                    <button onclick="filterCollection('all')" class="px-4 py-2 text-xs uppercase tracking-wider bg-champagne text-emeraldDark font-semibold transition-all filter-btn active-filter" data-filter="all">All Pieces</button>
+                    <button onclick="filterCollection('necklace')" class="px-4 py-2 text-xs uppercase tracking-wider border border-champagne text-champagne hover:bg-champagne/10 transition-all filter-btn" data-filter="necklace">Necklaces</button>
+                    <button onclick="filterCollection('polki')" class="px-4 py-2 text-xs uppercase tracking-wider border border-champagne text-champagne hover:bg-champagne/10 transition-all filter-btn" data-filter="polki">Polki & Jadau</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product items injected dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Interactive Bespoke Design Studio -->
+    <section id="bespoke" class="py-24 bg-emeraldDark relative border-y border-champagne/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <p class="text-champagne text-xs uppercase tracking-widest font-semibold">Custom Atelier</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream">The Bespoke <span class="gold-gradient-text">Design Studio</span></h2>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    Saw a celebrity wearing something breathtaking at Cannes or Met Gala? Describe your vision or upload a reference, select your precious metals and gemstones, and let our master karigars craft your 1-of-1 masterpiece.
+                </p>
+            </div>
+
+            <div class="glass-panel p-8 sm:p-12 max-w-4xl mx-auto">
+                <form id="bespoke-form" onsubmit="handleBespokeSubmit(event)" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Your Full Name</label>
+                            <input type="text" required placeholder="e.g. Maharani Gayatri Devi" class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne">
+                        </div>
+                        <!-- Email / Phone -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Contact Email / WhatsApp</label>
+                            <input type="text" required placeholder="e.g. vip@aabhushan.com" class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Jewelry Type -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Jewelry Category</label>
+                            <select id="bespoke-type" class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne">
+                                <option value="Necklace">Grand Polki/Jadau Necklace</option>
+                                <option value="Chandelier Earrings">Chandelier Earrings</option>
+                                <option value="Maang Tikka / Passa">Maang Tikka & Passa</option>
+                                <option value="Diamond Ring">Statement Diamond Ring</option>
+                                <option value="Bridal Set">Complete Bridal Suite</option>
+                            </select>
+                        </div>
+                        <!-- Metal Choice -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Precious Metal</label>
+                            <select id="bespoke-metal" class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne">
+                                <option value="18K Yellow Gold">18K Antique Yellow Gold</option>
+                                <option value="Rose Gold">18K Rose Gold</option>
+                                <option value="Platinum">Platinum with Rhodium Finish</option>
+                                <option value="Dual Tone">Dual Tone (Gold & Platinum)</option>
+                            </select>
+                        </div>
+                        <!-- Gemstone Choice -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Primary Gemstone</label>
+                            <select id="bespoke-stone" class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne">
+                                <option value="Zambian Emeralds">Zambian Emeralds & Polki</option>
+                                <option value="Golconda Diamonds">Golconda Cut Diamonds</option>
+                                <option value="Burmese Rubies">Burmese Pigeon's Blood Rubies</option>
+                                <option value="Basra Pearls">Natural Basra Pearls</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Celebrity Inspiration Description -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Celebrity Inspiration & Design Details</label>
+                        <textarea rows="4" required placeholder="Describe the celebrity look (e.g. Deepika Padukone at Cannes red carpet wearing emerald choker with heavy polki drops)..." class="w-full bg-emeraldCard border border-champagne/30 px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne"></textarea>
+                    </div>
+
+                    <!-- Reference Image Upload simulator -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-champagne font-semibold">Upload Celebrity Reference Image (Optional)</label>
+                        <div class="border-2 border-dashed border-champagne/30 p-6 text-center bg-emeraldCard/40 hover:border-champagne transition-colors cursor-pointer" onclick="simulateUpload()">
+                            <i class="fa-solid fa-cloud-arrow-up text-champagne text-2xl mb-2"></i>
+                            <p class="text-xs text-gray-300" id="upload-status-text">Click to browse or drag & drop reference moodboard</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button type="submit" class="px-10 py-4 gold-gradient-bg text-emeraldDark font-semibold uppercase tracking-widest text-sm hover:opacity-95 transition-all shadow-lg shadow-champagne/10">
+                            Submit Bespoke Consultation Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: The Atelier & Craftsmanship Story -->
+    <section id="story" class="py-24 bg-emeraldDeep relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-champagne text-xs uppercase tracking-widest font-semibold">Heritage & Legacy</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream">Forged in Royal Tradition, <span class="gold-gradient-text">Styled for Royalty</span></h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        At <span class="font-serif text-champagne">Aa</span><span class="font-hindi-custom text-white mx-0.5">भू</span><span class="font-serif text-champagne">shan</span>, our master artisans trace their lineage back to the royal courts of Rajasthan and Hyderabad. Every piece is hand-beaten, stone-set using the ancient <em>Thewa</em> and <em>Jadau</em> techniques, ensuring peerless brilliance.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-champagne"></i>
+                            <span>Strictly 1-of-1 design policy for absolute exclusivity</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-champagne"></i>
+                            <span>Private concierge service for celebrity fittings & red-carpet deliveries</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-champagne"></i>
+                            <span>Lifetime buyback & complimentary ancestral restoration warranty</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div class="glass-panel p-4 border border-champagne/30 relative">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Jewelry Craftsmanship" class="w-full h-[400px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute bottom-8 left-8 bg-emeraldDark/90 p-4 border-l-2 border-champagne backdrop-blur-md">
+                            <p class="font-serif text-champagne text-lg font-semibold">Master Karigar Studio</p>
+                            <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Jaipur & Mumbai Atelier</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-gray-400 py-16 border-t border-champagne/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                <div class="space-y-4">
+                    <div class="flex items-baseline tracking-wider">
+                        <span class="font-serif font-bold text-2xl text-champagne">Aa</span><span class="font-hindi-custom text-2xl text-white mx-0.5 transform translate-y-0.5">भू</span><span class="font-serif font-bold text-2xl text-champagne">shan</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Haute joaillerie featuring single-edition celebrity pieces and bespoke customisation.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-serif text-sm uppercase tracking-widest text-champagne font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#identity" class="hover:text-champagne transition-colors">Brand Identity</a></li>
+                        <li><a href="#concept" class="hover:text-champagne transition-colors">Single Edition Concept</a></li>
+                        <li><a href="#collection" class="hover:text-champagne transition-colors">Celebrity Edit</a></li>
+                        <li><a href="#bespoke" class="hover:text-champagne transition-colors">Bespoke Studio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-serif text-sm uppercase tracking-widest text-champagne font-semibold mb-4">Ateliers</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>The Royal Vault, Mumbai</li>
+                        <li>Jaipur Craftsmanship Wing</li>
+                        <li>Mayfair Private Salon, London</li>
+                        <li>Bandra West, Mumbai</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-serif text-sm uppercase tracking-widest text-champagne font-semibold mb-4">Private Concierge</h4>
+                    <p class="text-xs text-gray-400 mb-3">Subscribe for exclusive single-edition drop alerts.</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex">
+                        <input type="email" required placeholder="Enter your email" class="bg-charcoalLight border border-champagne/30 px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne w-full">
+                        <button type="submit" class="bg-champagne text-emeraldDark px-4 text-xs uppercase font-bold hover:bg-champagneLight transition-colors">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 Aabhushan Haute Joaillerie. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-champagne transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-champagne transition-colors">Terms of Vault</a>
+                    <a href="#" class="hover:text-champagne transition-colors">Authentication Guarantee</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-over Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-emeraldDeep border-l border-champagne/30 flex flex-col shadow-2xl">
+                <!-- Cart Header -->
+                <div class="px-6 py-6 border-b border-champagne/20 flex items-center justify-between">
+                    <h3 class="font-serif text-xl font-bold text-cream">Your Shopping Bag (<span id="cart-count">0</span>)</h3>
+                    <button onclick="closeCart()" class="text-champagne hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Items -->
+                </div>
+                <!-- Cart Footer -->
+                <div class="p-6 border-t border-champagne/20 space-y-4 bg-emeraldDark">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-300 uppercase tracking-widest text-xs">Total Valuation</span>
+                        <span id="cart-total" class="font-serif font-bold text-champagne text-lg">₹0</span>
+                    </div>
+                    <button onclick="proceedToCheckout()" class="w-full py-4 gold-gradient-bg text-emeraldDark font-semibold uppercase tracking-widest text-sm hover:opacity-95 transition-all shadow-lg text-center">
+                        Proceed to Secure Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-over Wishlist Drawer -->
+    <div id="wishlist-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeWishlist()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-emeraldDeep border-l border-champagne/30 flex flex-col shadow-2xl">
+                <div class="px-6 py-6 border-b border-champagne/20 flex items-center justify-between">
+                    <h3 class="font-serif text-xl font-bold text-cream">Saved Masterpieces (<span id="wishlist-count">0</span>)</h3>
+                    <button onclick="closeWishlist()" class="text-champagne hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="wishlist-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Wishlist Items -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Notifications / Checkout Simulation -->
+    <div id="custom-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="glass-panel p-8 max-w-md w-full relative z-10 text-center space-y-6 border border-champagne">
+            <div id="modal-icon" class="w-16 h-16 mx-auto rounded-full bg-emeraldCard border border-champagne flex items-center justify-center text-champagne text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="modal-title" class="font-serif text-2xl font-bold text-cream">Success</h3>
+            <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed">Your request has been successfully processed.</p>
+            <button onclick="closeModal()" class="px-8 py-3 gold-gradient-bg text-emeraldDark font-semibold uppercase tracking-widest text-xs hover:opacity-95 transition-all">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Product Data (Celebrity Single Editions)
+        const products = [
+            {
+                id: 1,
+                name: "The Deepika Cannes Emerald Choker",
+                category: "necklace",
+                celebrity: "Inspired by Deepika Padukone (Cannes Red Carpet)",
+                price: "₹24,50,000",
+                rawPrice: 2450000,
+                image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            },
+            {
+                id: 2,
+                name: "The Royal Hyderabad Polki Haaram",
+                category: "polki",
+                celebrity: "Inspired by Aditi Rao Hydari (Royal Wedding Edit)",
+                price: "₹38,90,000",
+                rawPrice: 3890000,
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            },
+            {
+                id: 3,
+                name: "The Kiara Advani Diamond Suite",
+                category: "necklace",
+                celebrity: "Inspired by Kiara Advani (Met Gala After-Party)",
+                price: "₹18,50,000",
+                rawPrice: 1850000,
+                image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            },
+            {
+                id: 4,
+                name: "The Jodhpuri Navratna Choker",
+                category: "polki",
+                celebrity: "Inspired by Royal House of Mewar Gala",
+                price: "₹45,00,000",
+                rawPrice: 4500000,
+                image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            },
+            {
+                id: 5,
+                name: "The Alia Bhatt Jadau Chandbalis",
+                category: "necklace",
+                celebrity: "Inspired by Alia Bhatt (National Film Awards)",
+                price: "₹12,80,000",
+                rawPrice: 1280000,
+                image: "https://images.unsplash.com/photo-1629222471676-dc7023c72b49?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            },
+            {
+                id: 6,
+                name: "The Nayanthara South Temple Set",
+                category: "polki",
+                celebrity: "Inspired by Nayanthara Wedding Reception",
+                price: "₹32,50,000",
+                rawPrice: 3250000,
+                image: "https://images.unsplash.com/photo-1611591472092-23c348f32890?auto=format&fit=crop&w=800&q=80",
+                editionStatus: "Available (1-of-1 Minted)"
+            }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+
+        // DOM Ready Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            updateBadges();
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
+        });
+
+        // Render Products
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            items.forEach(product => {
+                const isWishlisted = wishlist.some(item => item.id === product.id);
+                const card = document.createElement('div');
+                card.className = 'glass-panel p-5 flex flex-col justify-between group hover:border-champagne transition-all duration-300';
+                card.innerHTML = `
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-emeraldDark/90 px-3 py-1 text-[10px] uppercase tracking-widest text-champagne border border-champagne/30 backdrop-blur-sm">
+                            ${product.editionStatus}
+                        </div>
+                        <button onclick="toggleWishlist(${product.id})" class="absolute top-3 right-3 w-9 h-9 bg-emeraldDark/80 rounded-full flex items-center justify-center text-champagne hover:bg-champagne hover:text-emeraldDark transition-all">
+                            <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <p class="text-[11px] text-champagne uppercase tracking-widest font-medium">${product.celebrity}</p>
+                        <h3 class="font-serif text-xl font-semibold text-cream">${product.name}</h3>
+                        <p class="font-serif text-lg text-champagne font-bold">${product.price}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="claimSingleEdition(${product.id})" class="w-full py-3 gold-gradient-bg text-emeraldDark font-semibold uppercase tracking-widest text-xs hover:opacity-95 transition-all shadow-md">
+                            Claim Single Edition
+                        </button>
+                        <button onclick="openBespokeWithProduct('${product.name}')" class="w-full py-2.5 border border-champagne/40 text-champagne hover:bg-champagne/10 uppercase tracking-widest text-[11px] transition-all">
+                            Customize Like This
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Products
+        function filterCollection(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-champagne', 'text-emeraldDark', 'font-semibold');
+                btn.classList.add('border', 'border-champagne', 'text-champagne');
+            });
+            event.target.classList.remove('border', 'border-champagne', 'text-champagne');
+            event.target.classList.add('bg-champagne', 'text-emeraldDark', 'font-semibold');
+
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Logo Style Switcher for Interactive Showcase
+        function changeLogoStyle(style) {
+            const display = document.getElementById('interactive-logo-display');
+            if (style === 'classic') {
+                display.innerHTML = '<span class="font-serif font-bold text-5xl sm:text-6xl text-champagne drop-shadow-md">Aa</span><span class="font-hindi-custom text-5xl sm:text-6xl text-white mx-1 transform translate-y-1 drop-shadow-md">भू</span><span class="font-serif font-bold text-5xl sm:text-6xl text-champagne drop-shadow-md">shan</span>';
+            } else if (style === 'emerald') {
+                display.innerHTML = '<span class="font-serif font-bold text-5xl sm:text-6xl text-emerald-400 drop-shadow-md">Aa</span><span class="font-hindi-custom text-5xl sm:text-6xl text-champagne mx-1 transform translate-y-1 drop-shadow-md">भू</span><span class="font-serif font-bold text-5xl sm:text-6xl text-emerald-400 drop-shadow-md">shan</span>';
+            } else if (style === 'platinum') {
+                display.innerHTML = '<span class="font-serif font-bold text-5xl sm:text-6xl text-gray-200 drop-shadow-md">Aa</span><span class="font-hindi-custom text-5xl sm:text-6xl text-champagne mx-1 transform translate-y-1 drop-shadow-md">भू</span><span class="font-serif font-bold text-5xl sm:text-6xl text-gray-200 drop-shadow-md">shan</span>';
+            }
+        }
+
+        // Cart Actions
+        function claimSingleEdition(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (!existing) {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateBadges();
+            openCart();
+        }
+
+        function updateBadges() {
+            document.getElementById('cart-badge').innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
+            document.getElementById('cart-count').innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
+            document.getElementById('wishlist-badge').innerText = wishlist.length;
+            document.getElementById('wishlist-count').innerText = wishlist.length;
+
+            renderCartItems();
+            renderWishlistItems();
+        }
+
+        function openCart() {
+            document.getElementById('cart-drawer').classList.remove('hidden');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-drawer').classList.add('hidden');
+        }
+
+        function openWishlist() {
+            document.getElementById('wishlist-drawer').classList.remove('hidden');
+        }
+
+        function closeWishlist() {
+            document.getElementById('wishlist-drawer').classList.add('hidden');
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-sm text-center py-10">Your shopping bag is empty. Claim a single edition piece.</p>';
+                document.getElementById('cart-total').innerText = '₹0';
+                return;
+            }
+
+            cart.forEach(item => {
+                total += item.rawPrice * item.quantity;
+                const div = document.createElement('div');
+                div.className = 'flex items-center space-x-4 bg-emeraldCard p-4 border border-champagne/20';
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover border border-champagne/30">
+                    <div class="flex-1">
+                        <h4 class="font-serif text-sm font-semibold text-cream">${item.name}</h4>
+                        <p class="text-xs text-champagne font-bold mt-1">${item.price}</p>
+                        <span class="text-[10px] text-emerald-300 uppercase tracking-wider block mt-1">Single Edition • 1-of-1 Vault Locked</span>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-champagne"><i class="fa-solid fa-trash-can text-sm"></i></button>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('cart-total').innerText = '₹' + total.toLocaleString('en-IN');
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateBadges();
+        }
+
+        function toggleWishlist(productId) {
+            const index = wishlist.findIndex(item => item.id === productId);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                const product = products.find(p => p.id === productId);
+                wishlist.push(product);
+            }
+            updateBadges();
+            renderProducts(products);
+        }
+
+        function renderWishlistItems() {
+            const container = document.getElementById('wishlist-items');
+            container.innerHTML = '';
+
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-sm text-center py-10">No saved pieces in your wishlist.</p>';
+                return;
+            }
+
+            wishlist.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center space-x-4 bg-emeraldCard p-4 border border-champagne/20';
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover border border-champagne/30">
+                    <div class="flex-1">
+                        <h4 class="font-serif text-sm font-semibold text-cream">${item.name}</h4>
+                        <p class="text-xs text-champagne font-bold mt-1">${item.price}</p>
+                    </div>
+                    <button onclick="moveToCartFromWishlist(${item.id})" class="text-champagne hover:text-white text-xs uppercase tracking-wider font-semibold border border-champagne px-3 py-1.5">Claim</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function moveToCartFromWishlist(id) {
+            const product = wishlist.find(item => item.id === id);
+            if (!cart.some(item => item.id === id)) {
+                cart.push({ ...product, quantity: 1 });
+            }
+            wishlist = wishlist.filter(item => item.id !== id);
+            updateBadges();
+            closeWishlist();
+            openCart();
+        }
+
+        // Bespoke Form & Simulation
+        function simulateUpload() {
+            document.getElementById('upload-status-text').innerText = "Moodboard Reference Uploaded Successfully (VIP Verified)";
+            document.getElementById('upload-status-text').classList.add('text-champagne');
+        }
+
+        function handleBespokeSubmit(e) {
+            e.preventDefault();
+            const type = document.getElementById('bespoke-type').value;
+            const metal = document.getElementById('bespoke-metal').value;
+            const stone = document.getElementById('bespoke-stone').value;
+
+            showModal(
+                "Bespoke Consultation Confirmed",
+                `Your request for a custom ${type} in ${metal} with ${stone} has been assigned to our Master Karigar Atelier. Our private concierge will contact you within 2 hours with initial sketches.`
+            );
+            e.target.reset();
+            document.getElementById('upload-status-text').innerText = "Click to browse or drag & drop reference moodboard";
+            document.getElementById('upload-status-text').classList.remove('text-champagne');
+        }
+
+        function openBespokeWithProduct(productName) {
+            document.getElementById('bespoke').scrollIntoView({ behavior: 'smooth' });
+            showModal("Celebrity Style Loaded", `We have loaded the design blueprint for "${productName}" into your Bespoke Studio form. Adjust your metal and gemstone preferences to initiate creation.`);
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            closeCart();
+            showModal(
+                "Secure Vault Checkout Initiated",
+                "Your single-edition pieces have been locked in the vault. Our private security courier and concierge will coordinate white-glove insured delivery."
+            );
+            cart = [];
+            updateBadges();
+        }
+
+        // Newsletter
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showModal("Welcome to Aabhushan Elite", "You have successfully subscribed to private single-edition drops.");
+            e.target.reset();
+        }
+
+        // Modal Helpers
+        function showModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
